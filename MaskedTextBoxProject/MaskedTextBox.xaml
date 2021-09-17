@@ -8,6 +8,17 @@
              x:Name="control" d:DesignHeight="20" d:DesignWidth="125"
              Background="White" BorderBrush="#7a7a7a" BorderThickness="1">
     
+    <UserControl.Resources>
+        <Style TargetType="{x:Type TextBox}">
+            <EventSetter Event="PreviewTextInput" Handler="OnlyNumber_PreviewTextInput"/>
+            <Setter Property="Background" Value="{x:Null}"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="TextAlignment" Value="Center"/>
+            <Setter Property="MaxLength" Value="3"/>
+        </Style>
+    </UserControl.Resources>
+    
     <Grid x:Name="wrapGrid">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -18,67 +29,16 @@
             <ColumnDefinition Width="auto" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
+        
+        <TextBox x:Name="firstBox" Grid.Column="0" PreviewKeyDown="FirstByte_PreviewKeyDown" TextChanged="FirstByte_TextChanged"/>
+        <TextBlock Grid.Column="1" Text="." VerticalAlignment="Center" TextAlignment="Center" FontSize="15"/>
 
-        <TextBox x:Name="firstBox" Grid.Column="0" BorderThickness="0" Background="{x:Null}" MaxLength="3" Text="" 
-                 TextAlignment="Center" 
-                 VerticalAlignment="Center"                     
-                 PreviewKeyDown="firstByte_PreviewKeyDown"
-                 PreviewTextInput="firstByte_PreviewTextInput"
-                 TextChanged="firstByte_TextChanged" />
-        <TextBlock x:Name="textBlock"  
-                   Grid.Column="1"
-                   Text="." 
-                   FontSize="15"
-                   VerticalAlignment="Center" 
-                   TextAlignment="Center"
-                           />
+        <TextBox x:Name="secondBox" Grid.Column="2" PreviewKeyDown="SecondByte_PreviewKeyDown" TextChanged="SecondByte_TextChanged"/>
+        <TextBlock Grid.Column="3" Text="." VerticalAlignment="Center" TextAlignment="Center" FontSize="15"/>
 
-        <TextBox x:Name="secondBox" 
-                 Grid.Column="2"
-                 BorderThickness="0" 
-                 Background="{x:Null}"  
-                 MaxLength="3" 
-                 Text="" 
-                 TextAlignment="Center"
-                 VerticalAlignment="Center"                         
-                 PreviewKeyDown="secondByte_PreviewKeyDown" 
-                 PreviewTextInput="secondByte_PreviewTextInput"
-                 TextChanged="secondByte_TextChanged" />
-        <TextBlock x:Name="textBlock_Copy" 
-                   Grid.Column="3"
-                   Text="." 
-                   FontSize="15"
-                   VerticalAlignment="Center"  
-                   TextAlignment="Center"/>
+        <TextBox x:Name="thirdBox"  Grid.Column="4" PreviewKeyDown="ThirdByte_PreviewKeyDown" TextChanged="ThirdByte_TextChanged"/>
+        <TextBlock Grid.Column="5" Text="." VerticalAlignment="Center" TextAlignment="Center" FontSize="15"/>
 
-        <TextBox x:Name="thirdBox"  
-                 Grid.Column="4"
-                 BorderThickness="0" 
-                 Background="{x:Null}" 
-                 MaxLength="3" 
-                 Text=""
-                 TextAlignment="Center"
-                 VerticalAlignment="Center"                      
-                 PreviewKeyDown="thirdByte_PreviewKeyDown"
-                 PreviewTextInput="thirdByte_PreviewTextInput"
-                 TextChanged="thirdByte_TextChanged"/>
-        <TextBlock x:Name="textBlock_Copy1" 
-                   Grid.Column="5"
-                   Text="." 
-                   FontSize="15"
-                   VerticalAlignment="Center"  
-                   TextAlignment="Center"/>
-
-        <TextBox x:Name="fourthBox"  
-                 Grid.Column="6"
-                 BorderThickness="0"
-                 Background="{x:Null}" 
-                 MaxLength="3"
-                 Text=""
-                 TextAlignment="Center"
-                 VerticalAlignment="Center"                     
-                 PreviewKeyDown="fourthByte_PreviewKeyDown"
-                 PreviewTextInput="fourthByte_PreviewTextInput"
-                 TextChanged="fourthByte_TextChanged" />
+        <TextBox x:Name="fourthBox" Grid.Column="6" PreviewKeyDown="FourthByte_PreviewKeyDown" TextChanged="FourthByte_TextChanged"/>
     </Grid>
 </UserControl>
